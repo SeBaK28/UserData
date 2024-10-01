@@ -1,28 +1,29 @@
 ﻿<Properties StartupConfiguration="{05AF60AD-E708-4EF8-8162-4E1C202E047A}|https">
-  <MonoDevelop.Ide.Workbench ActiveDocument="api/Program.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="api/Controller/StockController.cs">
     <Files>
       <File FileName="api/Program.cs" Line="1" Column="1" />
-      <File FileName="api/appsettings.json" Line="1" Column="1" />
-      <File FileName="api/Data/ApplicationDbContext.cs" Line="1" Column="1" />
+      <File FileName="api/appsettings.json" />
+      <File FileName="api/Data/ApplicationDbContext.cs" />
+      <File FileName="api/Controller/StockController.cs" Line="9" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="WebAPI" expanded="True">
+          <Node name="WebAPI">
             <Node name="api" expanded="True">
+              <Node name="Controller" expanded="True" selected="True" />
               <Node name="Data" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.api PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
