@@ -68,7 +68,6 @@
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/MySql.Data.dll
-/Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/MySQLConnection.dll
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/Google.Protobuf.dll
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/MySql.Data.EntityFrameworkCore.dll
 /Users/sebastiankonstanty/Kursy/WebAPI/api/bin/Debug/net7.0/Microsoft.Extensions.Logging.Abstractions.dll

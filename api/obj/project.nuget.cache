@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G3BkYE6ol48zkewjeB/BeB70xyiGrHS3jVGmLehri3Px7OlFBYgjhsBIyrXG3C/hONekSJNwBU/4BidhRKZ3nA==",
+  "dgSpecHash": "7Ze249D4XWj1zFTJaxH79YfkMwASELV0lcWN39H77F6fomkz+IpsXP9R4zpQjUyhSZuhJosMN8huqVtjAyipVA==",
   "success": true,
   "projectFilePath": "/Users/sebastiankonstanty/Kursy/WebAPI/api/api.csproj",
   "expectedPackageFiles": [
@@ -51,7 +51,6 @@
     "/Users/sebastiankonstanty/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/mysql.data/9.0.0/mysql.data.9.0.0.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/mysql.data.entityframeworkcore/7.0.6-ir31/mysql.data.entityframeworkcore.7.0.6-ir31.nupkg.sha512",
-    "/Users/sebastiankonstanty/.nuget/packages/mysqlconnection/1.0.1/mysqlconnection.1.0.1.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/mysqlconnector/2.3.7/mysqlconnector.2.3.7.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/netstandard.library/1.6.0/netstandard.library.1.6.0.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/remotion.linq/2.1.1/remotion.linq.2.1.1.nupkg.sha512",
@@ -142,16 +141,5 @@
     "/Users/sebastiankonstanty/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512",
     "/Users/sebastiankonstanty/.nuget/packages/zstdsharp.port/0.8.0/zstdsharp.port.0.8.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MySQLConnection 1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "MySQLConnection",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
