@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Mapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controller
@@ -21,7 +22,8 @@ namespace api.Controller
         [HttpGet]
         public IActionResult GetAll()
         {
-            var stocks = _context.UserDatas.ToList();
+            var stocks = _context.UserDatas.ToList()
+            .Select(s => s.ToStockDto());
 
             return Ok(stocks);
         }
@@ -36,7 +38,7 @@ namespace api.Controller
                 return NotFound();
             }
 
-            return Ok(stock);
+            return Ok(stock.ToStockDto());
         }
     }
 }
