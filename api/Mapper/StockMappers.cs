@@ -21,5 +21,16 @@ namespace api.Mapper
                 DateOfCreateAccount = dataModel.DateOfCreateAccount
             };
         }
+
+        public static UserData ToStockFromCreateDto(this CreateStockRequestDto userDto)
+        {
+            return new UserData
+            {
+                Name = userDto.Name,
+                SecondName = userDto.SecondName,
+                Sex = userDto.Sex,
+                DateOfBirth = userDto.DateOfBirth,
+            };
+        }
     }
 }

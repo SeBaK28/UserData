@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.UserData;
 using api.Mapper;
 using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Crud;
 
 namespace api.Controller
 {
@@ -39,6 +41,17 @@ namespace api.Controller
             }
 
             return Ok(stock.ToStockDto());
+        }
+
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+        {
+            var stockModel = stockDto.ToStockFromCreateDto();
+
+            _context.UserDatas.Add(stockModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
     }
 }
