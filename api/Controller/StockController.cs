@@ -53,5 +53,26 @@ namespace api.Controller
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
+        {
+            var stockModel = _context.UserDatas.FirstOrDefault(x => x.Id == id);
+
+            if (stockModel == null)
+            {
+                return NotFound();
+            }
+
+            stockModel.Name = updateDto.Name;
+            stockModel.SecondName = updateDto.SecondName;
+            stockModel.Sex = updateDto.Sex;
+            stockModel.DateOfBirth = updateDto.DateOfBirth;
+
+            _context.SaveChanges();
+
+            return Ok(stockModel.ToStockDto());
+        }
     }
 }
