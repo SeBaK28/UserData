@@ -819,18 +819,6 @@
           }
         }
       },
-      "MySQLConnection/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "MySql.Data": "6.9.8"
-        },
-        "compile": {
-          "lib/MySQLConnection.dll": {}
-        },
-        "runtime": {
-          "lib/MySQLConnection.dll": {}
-        }
-      },
       "MySqlConnector/2.3.7": {
         "type": "package",
         "dependencies": {
@@ -3864,18 +3852,6 @@
         "lib/netstandard1.6/MySql.Data.EntityFrameworkCore.xml",
         "mysql.data.entityframeworkcore.7.0.6-ir31.nupkg.sha512",
         "mysql.data.entityframeworkcore.nuspec"
-      ]
-    },
-    "MySQLConnection/1.0.1": {
-      "sha512": "/BflH+iLaysGbkUghDuQfrxc2Xi5ckxnqlTLlZYslYrFatqMv9+2d24EvVGKTsJO+hAZeuSs6jcO2ZIvxkkkqQ==",
-      "type": "package",
-      "path": "mysqlconnection/1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MySQLConnection.dll",
-        "mysqlconnection.1.0.1.nupkg.sha512",
-        "mysqlconnection.nuspec"
       ]
     },
     "MySqlConnector/2.3.7": {
@@ -7957,7 +7933,6 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.20",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.20",
-      "MySQLConnection >= 1.0.1",
       "MySql.Data >= 9.0.0",
       "MySql.Data.EntityFrameworkCore >= 7.0.6-IR31",
       "MySqlConnector >= 2.3.7",
@@ -8027,10 +8002,6 @@
             "target": "Package",
             "version": "[7.0.20, )"
           },
-          "MySQLConnection": {
-            "target": "Package",
-            "version": "[1.0.1, )"
-          },
           "MySql.Data": {
             "target": "Package",
             "version": "[9.0.0, )"
@@ -8070,17 +8041,5 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.316/RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MySQLConnection 1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "MySQLConnection",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  }
 }

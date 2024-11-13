@@ -15,8 +15,6 @@ namespace api.Data
 
         }
 
-        public DbSet<UserData> UserDatas { get; set; }
-        public DbSet<PlaceOfBirth> PlaceOfBirths { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +22,9 @@ namespace api.Data
             modelBuilder.Entity<Models.UserData>()
             .OwnsOne(c => c.placeOfBirth);
         }
+
+        public DbSet<UserData> UserDatas { get; set; }
+        public DbSet<PlaceOfBirth> PlaceOfBirths { get; set; }
 
     }
 }

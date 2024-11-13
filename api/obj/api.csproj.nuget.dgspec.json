@@ -63,10 +63,6 @@
               "target": "Package",
               "version": "[7.0.20, )"
             },
-            "MySQLConnection": {
-              "target": "Package",
-              "version": "[1.0.1, )"
-            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.0.0, )"
