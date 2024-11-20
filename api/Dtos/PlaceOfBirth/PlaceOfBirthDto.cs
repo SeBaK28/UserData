@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api.Models
+namespace api.Dtos.PlaceOfBirth
 {
-    public class PlaceOfBirth
+    public class PlaceOfBirthDto
     {
         public int Id { get; set; }
         public string? Country { get; set; }
@@ -17,6 +17,5 @@ namespace api.Models
         public int HouseNumber { get; set; }
 
         public int UserDataId { get; set; }
-
     }
 }

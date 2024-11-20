@@ -20,6 +20,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<IUserDataRepository, UserDataRepository>();
+builder.Services.AddScoped<IPlaceOgBirthRepository, PlaceOgBirthRepository>();
 
 var app = builder.Build();
 
