@@ -10,7 +10,7 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace api.Controller
 {
-    [Route("api/comment")]
+    [Route("api/placeofbirth")]
     [ApiController]
     public class CommentController : ControllerBase
     {

@@ -13,7 +13,7 @@ using Mysqlx.Crud;
 
 namespace api.Controller
 {
-    [Route("api/stock")]
+    [Route("api/userdata")]
     [ApiController]
     public class StockController : ControllerBase
     {
