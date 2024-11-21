@@ -9,5 +9,6 @@ namespace api.Interfaces
     public interface IPlaceOgBirthRepository
     {
         Task<List<PlaceOfBirth>> GetAllAsync();
+        Task<PlaceOfBirth?> GetByIdAsync(int id);
     }
 }

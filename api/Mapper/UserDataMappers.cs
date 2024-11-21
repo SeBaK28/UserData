@@ -7,11 +7,11 @@ using api.Models;
 
 namespace api.Mapper
 {
-    public static class StockMappers
+    public static class UserDataMappers
     {
-        public static UserDto ToStockDto(this UserData dataModel)
+        public static UserDataDto ToStockDto(this UserData dataModel)
         {
-            return new UserDto
+            return new UserDataDto
             {
                 Id = dataModel.Id,
                 Name = dataModel.Name,
@@ -22,7 +22,7 @@ namespace api.Mapper
             };
         }
 
-        public static UserData ToStockFromCreateDto(this CreateStockRequestDto userDto)
+        public static UserData ToStockFromCreateDto(this CreateUserDataRequestDto userDto)
         {
             return new UserData
             {

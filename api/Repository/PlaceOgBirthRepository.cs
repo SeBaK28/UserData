@@ -20,5 +20,10 @@ namespace api.Repository
         {
             return await _context.PlaceOfBirths.ToListAsync();
         }
+
+        public async Task<PlaceOfBirth?> GetByIdAsync(int id)
+        {
+            return await _context.PlaceOfBirths.FindAsync(id);
+        }
     }
 }

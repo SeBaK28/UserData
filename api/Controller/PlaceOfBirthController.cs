@@ -28,5 +28,18 @@ namespace api.Controller
 
             return Ok(placeOfBirthDto);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var place = await _placebirth.GetByIdAsync(id);
+
+            if (place == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(place.ToPlaceOfBirthDto());
+        }
     }
 }

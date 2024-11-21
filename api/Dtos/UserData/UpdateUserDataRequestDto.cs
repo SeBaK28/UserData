@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.UserData
 {
-    public class CreateStockRequestDto
+    public class UpdateUserDataRequestDto
     {
         public string? Name { get; set; }
 
@@ -14,6 +14,5 @@ namespace api.Dtos.UserData
         public string? Sex { get; set; }
 
         public DateTime DateOfBirth { get; set; }
-
     }
 }

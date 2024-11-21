@@ -48,7 +48,7 @@ namespace api.Repository
             return await _context.UserDatas.FindAsync(id);
         }
 
-        public async Task<UserData?> UpdateAsync(int id, UpdateStockRequestDto stockDto)
+        public async Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto)
         {
             var exsistingModel = await _context.UserDatas.FirstOrDefaultAsync(x => x.Id == id);
 
