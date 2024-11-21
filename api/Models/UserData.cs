@@ -9,17 +9,17 @@ namespace api.Models
     {
         public int Id { get; set; }
 
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
-        public string? SecondName { get; set; }
+        public string SecondName { get; set; }
 
-        public string? Sex { get; set; }
+        public string Sex { get; set; }
 
         public DateTime DateOfBirth { get; set; }
 
         public DateTime DateOfCreateAccount { get; set; } = DateTime.Now;
 
-        public PlaceOfBirth? placeOfBirth { get; set; }
+        public List<PlaceOfBirth> PlaceOfBirths { get; set; } = new List<PlaceOfBirth>();
 
     }
 

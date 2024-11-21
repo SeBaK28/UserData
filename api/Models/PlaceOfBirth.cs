@@ -16,7 +16,9 @@ namespace api.Models
 
         public int HouseNumber { get; set; }
 
-        public int UserDataId { get; set; }
+        public int? UserDataId { get; set; }
+
+        public UserData? userData { get; set; }
 
     }
 }

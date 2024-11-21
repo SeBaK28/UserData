@@ -20,7 +20,10 @@ namespace api.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Models.UserData>()
-            .OwnsOne(c => c.placeOfBirth);
+            .HasMany(e => e.PlaceOfBirths)
+            .WithOne(e => e.userData)
+            .HasForeignKey(e => e.UserDataId)
+            .IsRequired(false);
         }
 
         public DbSet<UserData> UserDatas { get; set; }
