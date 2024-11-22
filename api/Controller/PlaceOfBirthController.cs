@@ -47,16 +47,16 @@ namespace api.Controller
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreatePlaceOfBirthRequestDto placeDto)
         {
+
             var placeModel = placeDto.ToPlaceOfBirthFromCreateDto();
 
-            var isValid = await _placebirth.CreateAsync(placeModel);
-
-            if (isValid == null)
+            if (await _placebirth.PlaceOfBirthEgzist(placeModel.UserDataId) == true)
             {
-                return Conflict();
+                return BadRequest("Place Of Birth to this user is already egzist");
             }
 
-            return CreatedAtAction(nameof(GetById), new { id = placeModel.Id }, placeModel.ToPlaceOfBirthDto());
+            await _placebirth.CreateAsync(placeModel);
+            return CreatedAtAction(nameof(GetById), new { id = placeModel }, placeModel.ToPlaceOfBirthDto());
         }
     }
 }

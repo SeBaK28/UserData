@@ -20,7 +20,7 @@ namespace api.Dtos.UserData
 
         public DateTime DateOfCreateAccount { get; set; } = DateTime.Now;
 
-        public List<PlaceOfBirthDto> PlaceOfBirths { get; set; }
+        public ICollection<PlaceOfBirthDto>? PlaceOfBirths { get; set; }
 
     }
 }

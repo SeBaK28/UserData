@@ -15,6 +15,6 @@ namespace api.Dtos.PlaceOfBirth
 
         public int HouseNumber { get; set; }
 
-        public int? UserDataId { get; set; }
+        public int UserDataId { get; set; }
     }
 }
