@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.PlaceOfBirth;
 using api.Interfaces;
 using api.Mapper;
+using Azure.Messaging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controller
@@ -40,6 +42,21 @@ namespace api.Controller
             }
 
             return Ok(place.ToPlaceOfBirthDto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreatePlaceOfBirthRequestDto placeDto)
+        {
+            var placeModel = placeDto.ToPlaceOfBirthFromCreateDto();
+
+            var isValid = await _placebirth.CreateAsync(placeModel);
+
+            if (isValid == null)
+            {
+                return Conflict();
+            }
+
+            return CreatedAtAction(nameof(GetById), new { id = placeModel.Id }, placeModel.ToPlaceOfBirthDto());
         }
     }
 }
