@@ -50,13 +50,13 @@ namespace api.Controller
 
             var placeModel = placeDto.ToPlaceOfBirthFromCreateDto();
 
-            if (await _placebirth.PlaceOfBirthEgzist(placeModel.UserDataId) == true)
+            if (await _placebirth.PlaceOfBirthExist(placeModel.UserDataId) == true)
             {
-                return BadRequest("Place Of Birth to this user is already egzist");
+                return BadRequest("Place Of Birth to this user is already exist");
             }
 
             await _placebirth.CreateAsync(placeModel);
-            return CreatedAtAction(nameof(GetById), new { id = placeModel }, placeModel.ToPlaceOfBirthDto());
+            return CreatedAtAction(nameof(GetById), new { id = placeModel.Id }, placeModel.ToPlaceOfBirthDto());
         }
     }
 }

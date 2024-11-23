@@ -11,6 +11,6 @@ namespace api.Interfaces
         Task<List<PlaceOfBirth>> GetAllAsync();
         Task<PlaceOfBirth?> GetByIdAsync(int id);
         Task<PlaceOfBirth> CreateAsync(PlaceOfBirth placeOfBirth);
-        Task<bool> PlaceOfBirthEgzist(int id);
+        Task<bool> PlaceOfBirthExist(int id);
     }
 }

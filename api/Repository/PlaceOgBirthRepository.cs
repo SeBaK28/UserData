@@ -36,7 +36,7 @@ namespace api.Repository
             return await _context.PlaceOfBirths.FindAsync(id);
         }
 
-        public async Task<bool> PlaceOfBirthEgzist(int id)
+        public async Task<bool> PlaceOfBirthExist(int id)
         {
             return await _context.PlaceOfBirths.AnyAsync(s => s.UserDataId == id);
         }
