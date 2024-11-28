@@ -58,5 +58,20 @@ namespace api.Controller
             await _placebirth.CreateAsync(placeModel);
             return CreatedAtAction(nameof(GetById), new { id = placeModel.Id }, placeModel.ToPlaceOfBirthDto());
         }
+
+        [HttpPut]
+        [Route("{userDataId}")]
+        public async Task<IActionResult> Create([FromRoute] int userDataId, [FromBody] UpdatePlaceOfBirthRequestDto updateDto)
+        {
+            var placeModel = await _placebirth.UpdateAsync(userDataId, updateDto);
+
+            if (placeModel == null)
+            {
+                return NotFound("Place Of Birth not found");
+            }
+
+            return Ok(placeModel.ToPlaceOfBirthDto());
+
+        }
     }
 }

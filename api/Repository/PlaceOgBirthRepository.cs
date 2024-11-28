@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.PlaceOfBirth;
 using api.Interfaces;
 using api.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -39,6 +40,25 @@ namespace api.Repository
         public async Task<bool> PlaceOfBirthExist(int id)
         {
             return await _context.PlaceOfBirths.AnyAsync(s => s.UserDataId == id);
+        }
+
+        public async Task<PlaceOfBirth?> UpdateAsync(int userId, UpdatePlaceOfBirthRequestDto placeOfBirth)
+        {
+            var existModel = await _context.PlaceOfBirths.FirstOrDefaultAsync(x => x.UserDataId == userId);
+
+            if (existModel == null)
+            {
+                return null;
+            }
+
+            existModel.City = placeOfBirth.City;
+            existModel.Country = placeOfBirth.Country;
+            existModel.Street = placeOfBirth.Street;
+            existModel.HouseNumber = placeOfBirth.HouseNumber;
+
+            await _context.SaveChangesAsync();
+
+            return existModel;
         }
     }
 }
