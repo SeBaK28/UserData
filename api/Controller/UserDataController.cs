@@ -15,12 +15,12 @@ namespace api.Controller
 {
     [Route("api/userdata")]
     [ApiController]
-    public class StockController : ControllerBase
+    public class UserDataController : ControllerBase
     {
 
         private readonly IUserDataRepository _userDataRepo;
 
-        public StockController(IUserDataRepository userDataRepo)
+        public UserDataController(IUserDataRepository userDataRepo)
         {
             _userDataRepo = userDataRepo;
         }
@@ -28,57 +28,57 @@ namespace api.Controller
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var stocks = await _userDataRepo.GetAllAsync();
+            var users = await _userDataRepo.GetAllAsync();
 
-            var stockDto = stocks.Select(s => s.ToStockDto());
+            var userDto = users.Select(s => s.ToStockDto());
 
-            return Ok(stocks);
+            return Ok(users);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var stock = await _userDataRepo.GetByIdAsync(id);
+            var user = await _userDataRepo.GetByIdAsync(id);
 
-            if (stock == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(stock.ToStockDto());
+            return Ok(user.ToStockDto());
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
+        public async Task<IActionResult> Create([FromBody] CreateUserDataRequestDto userDto)
         {
-            var stockModel = stockDto.ToStockFromCreateDto();
+            var userDataModel = userDto.ToStockFromCreateDto();
 
-            await _userDataRepo.CreateAsync(stockModel);
-            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
+            await _userDataRepo.CreateAsync(userDataModel);
+            return CreatedAtAction(nameof(GetById), new { id = userDataModel.Id }, userDataModel.ToStockDto());
         }
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateUserDataRequestDto updateDto)
         {
-            var stockModel = await _userDataRepo.UpdateAsync(id, updateDto);
+            var userDataModel = await _userDataRepo.UpdateAsync(id, updateDto);
 
-            if (stockModel == null)
+            if (userDataModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(stockModel.ToStockDto());
+            return Ok(userDataModel.ToStockDto());
         }
 
         [HttpDelete]
         [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var stockModel = await _userDataRepo.DeleteAsync(id);
+            var userDataModel = await _userDataRepo.DeleteAsync(id);
 
-            if (stockModel == null)
+            if (userDataModel == null)
             {
                 return NotFound();
             }

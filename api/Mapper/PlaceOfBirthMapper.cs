@@ -21,5 +21,17 @@ namespace api.Mapper
                 UserDataId = placeOfBirth.UserDataId,
             };
         }
+
+        public static PlaceOfBirth ToPlaceOfBirthFromCreateDto(this CreatePlaceOfBirthRequestDto placeDto)
+        {
+            return new PlaceOfBirth
+            {
+                Country = placeDto.Country,
+                City = placeDto.City,
+                Street = placeDto.Street,
+                HouseNumber = placeDto.HouseNumber,
+                UserDataId = placeDto.UserDataId
+            };
+        }
     }
 }

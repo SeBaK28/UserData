@@ -7,22 +7,23 @@ using api.Models;
 
 namespace api.Mapper
 {
-    public static class StockMappers
+    public static class UserDataMappers
     {
-        public static UserDto ToStockDto(this UserData dataModel)
+        public static UserDataDto ToStockDto(this UserData dataModel)
         {
-            return new UserDto
+            return new UserDataDto
             {
                 Id = dataModel.Id,
                 Name = dataModel.Name,
                 SecondName = dataModel.SecondName,
                 Sex = dataModel.Sex,
                 DateOfBirth = dataModel.DateOfBirth,
-                DateOfCreateAccount = dataModel.DateOfCreateAccount
+                DateOfCreateAccount = dataModel.DateOfCreateAccount,
+                PlaceOfBirths = dataModel.PlaceOfBirths.Select(c => c.ToPlaceOfBirthDto()).ToList()
             };
         }
 
-        public static UserData ToStockFromCreateDto(this CreateStockRequestDto userDto)
+        public static UserData ToStockFromCreateDto(this CreateUserDataRequestDto userDto)
         {
             return new UserData
             {

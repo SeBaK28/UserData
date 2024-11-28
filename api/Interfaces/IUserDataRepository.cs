@@ -8,7 +8,7 @@ namespace api.Interfaces
         Task<List<UserData>> GetAllAsync();
         Task<UserData?> GetByIdAsync(int id);
         Task<UserData> CreateAsync(UserData userData);
-        Task<UserData?> UpdateAsync(int id, UpdateStockRequestDto stockDto);
+        Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto);
         Task<UserData?> DeleteAsync(int id);
     }
 }
