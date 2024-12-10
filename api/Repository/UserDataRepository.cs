@@ -42,10 +42,15 @@ namespace api.Repository
         {
             return await _context.UserDatas.Include(c => c.PlaceOfBirths).ToListAsync();
         }
+        /*
+                public async Task<UserData?> GetByIdAsync(int id)
+                {
+                    return await _context.UserDatas.Include(c => c.PlaceOfBirths).FirstOrDefaultAsync(i => i.Id == id);
+                }*/
 
-        public async Task<UserData?> GetByIdAsync(int id)
+        public async Task<UserData?> GetByNameAsync(string Name)
         {
-            return await _context.UserDatas.Include(c => c.PlaceOfBirths).FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.UserDatas.FirstOrDefaultAsync(n => n.Name == Name);
         }
 
         public async Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto)
