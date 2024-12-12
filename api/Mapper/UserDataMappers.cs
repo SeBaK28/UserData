@@ -17,7 +17,7 @@ namespace api.Mapper
                 Name = dataModel.Name,
                 SecondName = dataModel.SecondName,
                 Sex = dataModel.Sex,
-                DateOfBirth = dataModel.DateOfBirth,
+                DateOfBirth = dataModel.DateOfBirth.ToString("dd/MM/yyyy"),
                 DateOfCreateAccount = dataModel.DateOfCreateAccount,
                 PlaceOfBirths = dataModel.PlaceOfBirths.Select(c => c.ToPlaceOfBirthDto()).ToList()
             };

@@ -3,6 +3,10 @@ using api.Models;
 using api.Data;
 using Microsoft.EntityFrameworkCore;
 using api.Dtos.UserData;
+using Mysqlx;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.SqlServer.Server;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace api.Repository
 {
@@ -42,10 +46,15 @@ namespace api.Repository
         {
             return await _context.UserDatas.Include(c => c.PlaceOfBirths).ToListAsync();
         }
+        /*
+                public async Task<UserData?> GetByIdAsync(int id)
+                {
+                    return await _context.UserDatas.Include(c => c.PlaceOfBirths).FirstOrDefaultAsync(i => i.Id == id);
+                }*/
 
-        public async Task<UserData?> GetByIdAsync(int id)
+        public async Task<UserData?> GetByNameAsync(string Name)
         {
-            return await _context.UserDatas.Include(c => c.PlaceOfBirths).FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.UserDatas.FirstOrDefaultAsync(n => n.Name == Name);
         }
 
         public async Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto)
@@ -57,6 +66,7 @@ namespace api.Repository
                 return null;
             }
 
+
             exsistingModel.Name = stockDto.Name;
             exsistingModel.SecondName = stockDto.SecondName;
             exsistingModel.Sex = stockDto.Sex;
@@ -66,5 +76,6 @@ namespace api.Repository
 
             return exsistingModel;
         }
+
     }
 }

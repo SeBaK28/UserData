@@ -34,18 +34,32 @@ namespace api.Controller
 
             return Ok(users);
         }
+        /*
+                [HttpGet("{id}")]
+                public async Task<IActionResult> GetById([FromRoute] int id)
+                {
+                    var user = await _userDataRepo.GetByIdAsync(id);
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+                    if (user == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return Ok(user.ToStockDto());
+                }*/
+
+
+        [HttpGet("{Name}")]
+        public async Task<IActionResult> GetByName([FromRoute] string Name)
         {
-            var user = await _userDataRepo.GetByIdAsync(id);
+            var userName = await _userDataRepo.GetByNameAsync(Name);
 
-            if (user == null)
+            if (userName == null)
             {
                 return NotFound();
             }
 
-            return Ok(user.ToStockDto());
+            return Ok(userName.ToStockDto());
         }
 
 
@@ -55,7 +69,7 @@ namespace api.Controller
             var userDataModel = userDto.ToStockFromCreateDto();
 
             await _userDataRepo.CreateAsync(userDataModel);
-            return CreatedAtAction(nameof(GetById), new { id = userDataModel.Id }, userDataModel.ToStockDto());
+            return CreatedAtAction(nameof(GetByName), new { id = userDataModel.Id }, userDataModel.ToStockDto());
         }
 
         [HttpPut]

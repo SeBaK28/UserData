@@ -24,10 +24,17 @@ namespace api.Data
             .WithOne(e => e.userData)
             .HasForeignKey(e => e.UserDataId)
             .IsRequired(false);
+
+            modelBuilder.Entity<Models.UserData>()
+            .HasMany(e => e.ResidentialAddresProp)
+            .WithOne(e => e.userData)
+            .HasForeignKey(e => e.UserDataId)
+            .IsRequired(false);
         }
 
         public DbSet<UserData> UserDatas { get; set; }
         public DbSet<PlaceOfBirth> PlaceOfBirths { get; set; }
+        public DbSet<ResidentialAddres> ResidentialAddress { get; set; }
 
     }
 }

@@ -1,3 +1,4 @@
+using api.Controller;
 using api.Data;
 using api.Interfaces;
 using api.Repository;
@@ -28,6 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IUserDataRepository, UserDataRepository>();
 builder.Services.AddScoped<IPlaceOgBirthRepository, PlaceOgBirthRepository>();
+builder.Services.AddScoped<IResidentialAddresRepository, ResidentialAddesRepository>();
 
 var app = builder.Build();
 

@@ -12,11 +12,11 @@ namespace api.Controller
 {
     [Route("api/placeofbirth")]
     [ApiController]
-    public class CommentController : ControllerBase
+    public class PlaceOfBirthController : ControllerBase
     {
         private readonly IPlaceOgBirthRepository _placebirth;
 
-        public CommentController(IPlaceOgBirthRepository placebirth)
+        public PlaceOfBirthController(IPlaceOgBirthRepository placebirth)
         {
             _placebirth = placebirth;
         }
@@ -61,7 +61,7 @@ namespace api.Controller
 
         [HttpPut]
         [Route("{userDataId}")]
-        public async Task<IActionResult> Create([FromRoute] int userDataId, [FromBody] UpdatePlaceOfBirthRequestDto updateDto)
+        public async Task<IActionResult> Update([FromRoute] int userDataId, [FromBody] UpdatePlaceOfBirthRequestDto updateDto)
         {
             var placeModel = await _placebirth.UpdateAsync(userDataId, updateDto);
 
