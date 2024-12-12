@@ -3,6 +3,10 @@ using api.Models;
 using api.Data;
 using Microsoft.EntityFrameworkCore;
 using api.Dtos.UserData;
+using Mysqlx;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.SqlServer.Server;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace api.Repository
 {
@@ -62,6 +66,7 @@ namespace api.Repository
                 return null;
             }
 
+
             exsistingModel.Name = stockDto.Name;
             exsistingModel.SecondName = stockDto.SecondName;
             exsistingModel.Sex = stockDto.Sex;
@@ -71,5 +76,6 @@ namespace api.Repository
 
             return exsistingModel;
         }
+
     }
 }
