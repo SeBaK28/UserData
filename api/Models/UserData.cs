@@ -17,9 +17,12 @@ namespace api.Models
 
         public DateTime DateOfBirth { get; set; }
 
+        //public DateTime DateOfAccess { get; set; }
+
         public DateTime DateOfCreateAccount { get; set; } = DateTime.Now;
 
         public List<PlaceOfBirth> PlaceOfBirths { get; set; } = new List<PlaceOfBirth>();
+        public List<ResidentialAddres> ResidentialAddresProp { get; set; } = new List<ResidentialAddres>();
 
     }
 
