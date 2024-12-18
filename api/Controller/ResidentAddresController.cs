@@ -14,7 +14,6 @@ namespace api.Controller
     [ApiController]
     public class ResidentAddresController : ControllerBase
     {
-
         private readonly IResidentialAddresRepository _residentAddress;
 
         public ResidentAddresController(IResidentialAddresRepository residentAddress)
@@ -45,11 +44,11 @@ namespace api.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createAddres)
+        public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createDto)
         {
-            var addresModel = createAddres.ToAddresStockFromCreateDto();
+            var addresModel = createDto.ToAddresStockFromCreateDto();
 
-            if (await _residentAddress.AddressExist(addresModel.UserDataId) == true)
+            if (await _residentAddress.ResidentialAddresExist(addresModel.UserDataId) == true)
             {
                 return BadRequest("Resident Addres to this user is already exist");
             }

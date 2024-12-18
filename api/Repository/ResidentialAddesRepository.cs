@@ -51,9 +51,9 @@ namespace api.Repository
             return await _context.ResidentialAddress.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<bool> AddressExist(int id)
+        public async Task<bool> ResidentialAddresExist(int id)
         {
-            return await _context.ResidentialAddress.AnyAsync(a => a.UserDataId == id);
+            return await _context.ResidentialAddress.AnyAsync(s => s.UserDataId == id);
         }
     }
 }

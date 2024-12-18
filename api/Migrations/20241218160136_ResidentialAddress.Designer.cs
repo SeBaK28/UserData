@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api.Data;
 
@@ -11,9 +12,11 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241218160136_ResidentialAddress")]
+    partial class ResidentialAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,35 +26,34 @@ namespace api.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("api.Models.PlaceOfBirth", b =>
-{
-    b.Property<int>("Id")
-        .ValueGeneratedOnAdd()
-        .HasColumnType("int");
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-    b.Property<string>("City")
-        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
-    b.Property<string>("Country")
-        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
-    b.Property<int?>("HouseNumber")
-        .HasColumnType("int");
+                    b.Property<int?>("HouseNumber")
+                        .HasColumnType("int");
 
-    b.Property<string>("Street")
-        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
 
-    b.Property<int>("UserDataId")
-        .HasColumnType("int");
+                    b.Property<int>("UserDataId")
+                        .HasColumnType("int");
 
-    b.HasKey("Id");
+                    b.HasKey("Id");
 
-    b.HasIndex("UserDataId");
+                    b.HasIndex("UserDataId");
 
-    b.ToTable("PlaceOfBirths");
-});
-
+                    b.ToTable("PlaceOfBirths");
+                });
 
             modelBuilder.Entity("api.Models.ResidentialAddres", b =>
                 {

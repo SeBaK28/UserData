@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.ResidentialAddres
 {
-    public interface CreateRessidentAddressRequestDto
+    public class CreateRessidentAddressRequestDto
     {
         public string? Country { get; set; }
         public string? City { get; set; }
