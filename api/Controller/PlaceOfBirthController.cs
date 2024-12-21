@@ -24,6 +24,9 @@ namespace api.Controller
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var placeOfBirths = await _placebirth.GetAllAsync();
 
             var placeOfBirthDto = placeOfBirths.Select(s => s.ToPlaceOfBirthDto());
@@ -31,9 +34,12 @@ namespace api.Controller
             return Ok(placeOfBirthDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var place = await _placebirth.GetByIdAsync(id);
 
             if (place == null)
@@ -47,6 +53,8 @@ namespace api.Controller
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreatePlaceOfBirthRequestDto placeDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var placeModel = placeDto.ToPlaceOfBirthFromCreateDto();
 
@@ -60,9 +68,12 @@ namespace api.Controller
         }
 
         [HttpPut]
-        [Route("{userDataId}")]
+        [Route("{userDataId:int}")]
         public async Task<IActionResult> Update([FromRoute] int userDataId, [FromBody] UpdatePlaceOfBirthRequestDto updateDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var placeModel = await _placebirth.UpdateAsync(userDataId, updateDto);
 
             if (placeModel == null)

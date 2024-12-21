@@ -44,7 +44,7 @@ namespace api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResidentialAddress", x => x.Id);
+                    table.PrimaryKey("PK_ResidentialAddress", x => x.UserDataId);
                     table.ForeignKey(
                         name: "FK_ResidentialAddress_UserDatas_UserDataId",
                         column: x => x.UserDataId,

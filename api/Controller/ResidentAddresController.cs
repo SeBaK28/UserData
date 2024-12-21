@@ -24,15 +24,20 @@ namespace api.Controller
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var resident = await _residentAddress.GetAllAsync();
             var residentDto = resident.Select(s => s.ToAddresStockDto());
-            return Ok(resident);
+            return Ok(residentDto);
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> UpdateAddres([FromRoute] int id, [FromBody] UpdateResidentialAddresRequestDto adressDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var addresModel = await _residentAddress.UpdateAddresAsync(id, adressDto);
 
             if (addresModel == null)
@@ -46,6 +51,8 @@ namespace api.Controller
         [HttpPost]
         public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var addresModel = createDto.ToAddresStockFromCreateDto();
 
             if (await _residentAddress.ResidentialAddresExist(addresModel.UserDataId) == true)
