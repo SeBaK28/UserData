@@ -11,7 +11,7 @@ namespace api.Interfaces
     {
         Task<List<ResidentialAddres>> GetAllAsync();
         Task<ResidentialAddres?> GetByIdAsync(int id);
-        Task<bool> AddressExist(int id);
+        Task<bool> ResidentialAddresExist(int id);
         Task<ResidentialAddres?> UpdateAddresAsync(int id, UpdateResidentialAddresRequestDto updateResident);
         Task<ResidentialAddres> CreateAddressAsync(ResidentialAddres residentialAddres);
 

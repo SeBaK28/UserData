@@ -30,6 +30,7 @@ namespace api.Data
             .WithOne(e => e.userData)
             .HasForeignKey(e => e.UserDataId)
             .IsRequired(false);
+
         }
 
         public DbSet<UserData> UserDatas { get; set; }

@@ -44,18 +44,18 @@ namespace api.Repository
 
         public async Task<List<UserData>> GetAllAsync()
         {
-            return await _context.UserDatas.Include(c => c.PlaceOfBirths).ToListAsync();
+            return await _context.UserDatas.Include(c => c.PlaceOfBirths).Include(d => d.ResidentialAddresProp).ToListAsync();
         }
-        /*
-                public async Task<UserData?> GetByIdAsync(int id)
-                {
-                    return await _context.UserDatas.Include(c => c.PlaceOfBirths).FirstOrDefaultAsync(i => i.Id == id);
-                }*/
 
-        public async Task<UserData?> GetByNameAsync(string Name)
+        public async Task<UserData?> GetByIdAsync(int id)
         {
-            return await _context.UserDatas.FirstOrDefaultAsync(n => n.Name == Name);
+            return await _context.UserDatas.Include(c => c.PlaceOfBirths).Include(d => d.ResidentialAddresProp).FirstOrDefaultAsync(i => i.Id == id);
         }
+
+        // public async Task<UserData?> GetByNameAsync(string Name)
+        // {
+        //     return await _context.UserDatas.FirstOrDefaultAsync(n => n.Name == Name);
+        // }
 
         public async Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto)
         {

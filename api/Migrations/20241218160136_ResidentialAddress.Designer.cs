@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api.Data;
 
@@ -11,9 +12,11 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241218160136_ResidentialAddress")]
+    partial class ResidentialAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace api.Migrations
 
                     b.HasIndex("UserDataId");
 
-                    b.ToTable("PlaceOfBirths", (string)null);
+                    b.ToTable("PlaceOfBirths");
                 });
 
             modelBuilder.Entity("api.Models.ResidentialAddres", b =>
@@ -76,7 +79,7 @@ namespace api.Migrations
 
                     b.HasIndex("UserDataId");
 
-                    b.ToTable("ResidentialAddress", (string)null);
+                    b.ToTable("ResidentialAddress");
                 });
 
             modelBuilder.Entity("api.Models.UserData", b =>
@@ -104,7 +107,7 @@ namespace api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserDatas", (string)null);
+                    b.ToTable("UserDatas");
                 });
 
             modelBuilder.Entity("api.Models.PlaceOfBirth", b =>

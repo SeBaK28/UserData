@@ -28,54 +28,65 @@ namespace api.Controller
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var users = await _userDataRepo.GetAllAsync();
 
             var userDto = users.Select(s => s.ToStockDto());
 
             return Ok(users);
         }
-        /*
-                [HttpGet("{id}")]
-                public async Task<IActionResult> GetById([FromRoute] int id)
-                {
-                    var user = await _userDataRepo.GetByIdAsync(id);
-
-                    if (user == null)
-                    {
-                        return NotFound();
-                    }
-
-                    return Ok(user.ToStockDto());
-                }*/
-
-
-        [HttpGet("{Name}")]
-        public async Task<IActionResult> GetByName([FromRoute] string Name)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var userName = await _userDataRepo.GetByNameAsync(Name);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (userName == null)
+            var user = await _userDataRepo.GetByIdAsync(id);
+
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(userName.ToStockDto());
+            return Ok(user.ToStockDto());
         }
+
+
+        // [HttpGet("{Name}")]
+        // public async Task<IActionResult> GetByName([FromRoute] string Name)
+        // {
+        //     var userName = await _userDataRepo.GetByNameAsync(Name);
+
+        //     if (userName == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     return Ok(userName.ToStockDto());
+        // }
 
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserDataRequestDto userDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var userDataModel = userDto.ToStockFromCreateDto();
 
             await _userDataRepo.CreateAsync(userDataModel);
-            return CreatedAtAction(nameof(GetByName), new { id = userDataModel.Id }, userDataModel.ToStockDto());
+            return CreatedAtAction(nameof(GetById), new { id = userDataModel.Id }, userDataModel.ToStockDto());
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateUserDataRequestDto updateDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var userDataModel = await _userDataRepo.UpdateAsync(id, updateDto);
 
             if (userDataModel == null)
@@ -87,9 +98,12 @@ namespace api.Controller
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var userDataModel = await _userDataRepo.DeleteAsync(id);
 
             if (userDataModel == null)

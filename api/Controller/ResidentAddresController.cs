@@ -14,7 +14,6 @@ namespace api.Controller
     [ApiController]
     public class ResidentAddresController : ControllerBase
     {
-
         private readonly IResidentialAddresRepository _residentAddress;
 
         public ResidentAddresController(IResidentialAddresRepository residentAddress)
@@ -25,15 +24,20 @@ namespace api.Controller
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var resident = await _residentAddress.GetAllAsync();
             var residentDto = resident.Select(s => s.ToAddresStockDto());
-            return Ok(resident);
+            return Ok(residentDto);
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> UpdateAddres([FromRoute] int id, [FromBody] UpdateResidentialAddresRequestDto adressDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var addresModel = await _residentAddress.UpdateAddresAsync(id, adressDto);
 
             if (addresModel == null)
@@ -45,11 +49,13 @@ namespace api.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createAddres)
+        public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createDto)
         {
-            var addresModel = createAddres.ToAddresStockFromCreateDto();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var addresModel = createDto.ToAddresStockFromCreateDto();
 
-            if (await _residentAddress.AddressExist(addresModel.UserDataId) == true)
+            if (await _residentAddress.ResidentialAddresExist(addresModel.UserDataId) == true)
             {
                 return BadRequest("Resident Addres to this user is already exist");
             }
