@@ -49,7 +49,7 @@ namespace api.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromRoute] CreateRessidentAddressRequestDto createDto)
+        public async Task<IActionResult> Create([FromBody] CreateRessidentAddressRequestDto createDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

@@ -29,6 +29,7 @@ namespace api.Mapper
                 Country = createDto.Country,
                 City = createDto.City,
                 Street = createDto.Street,
+                UserDataId = createDto.UserDataId
             };
         }
     }
