@@ -29,7 +29,7 @@ namespace api.Data
             .HasMany(e => e.ResidentialAddresProp)
             .WithOne(e => e.userData)
             .HasForeignKey(e => e.UserDataId)
-            .IsRequired(false);
+            .IsRequired(true);
 
         }
 
