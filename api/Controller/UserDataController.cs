@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.UserData;
+using api.Helpers;
 using api.Interfaces;
 using api.Mapper;
 using api.Repository;
@@ -26,12 +27,12 @@ namespace api.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var users = await _userDataRepo.GetAllAsync();
+            var users = await _userDataRepo.GetAllAsync(query);
 
             var userDto = users.Select(s => s.ToStockDto());
 

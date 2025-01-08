@@ -7,6 +7,7 @@ using Mysqlx;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.SqlServer.Server;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using api.Helpers;
 
 namespace api.Repository
 {
@@ -42,9 +43,22 @@ namespace api.Repository
             return stockModel;
         }
 
-        public async Task<List<UserData>> GetAllAsync()
+        public async Task<List<UserData>> GetAllAsync(QueryObject query)
         {
-            return await _context.UserDatas.Include(c => c.PlaceOfBirths).Include(d => d.ResidentialAddresProp).ToListAsync();
+            var stock = _context.UserDatas.Include(c => c.PlaceOfBirths).Include(d => d.ResidentialAddresProp).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query.Name))
+            {
+                stock = stock.Where(s => s.Name.Contains(query.Name));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.SecondName))
+            {
+                stock = stock.Where(s => s.SecondName.Contains(query.SecondName));
+            }
+
+            return await stock.ToListAsync();
+
         }
 
         public async Task<UserData?> GetByIdAsync(int id)
