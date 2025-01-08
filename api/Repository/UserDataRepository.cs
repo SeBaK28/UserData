@@ -57,6 +57,14 @@ namespace api.Repository
                 stock = stock.Where(s => s.SecondName.Contains(query.SecondName));
             }
 
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("SecoundName", StringComparison.OrdinalIgnoreCase))
+                {
+                    stock = query.IsDescending ? stock.OrderByDescending(s => s.SecondName) : stock.OrderBy(s => s.SecondName);
+                }
+            }
+
             return await stock.ToListAsync();
 
         }
