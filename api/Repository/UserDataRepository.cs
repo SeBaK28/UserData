@@ -65,7 +65,9 @@ namespace api.Repository
                 }
             }
 
-            return await stock.ToListAsync();
+            var skipPageNumber = (query.PageNumber - 1) * query.PageSize;
+
+            return await stock.Skip(skipPageNumber).Take(query.PageSize).ToListAsync();
 
         }
 
