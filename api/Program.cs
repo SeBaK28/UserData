@@ -1,5 +1,6 @@
 using api.Controller;
 using api.Data;
+using api.Extensions;
 using api.Interfaces;
 using api.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Database"));
 });
 
+builder.Services.AddInfrustructure(builder);
+
 builder.Services.AddScoped<IUserDataRepository, UserDataRepository>();
 builder.Services.AddScoped<IPlaceOgBirthRepository, PlaceOgBirthRepository>();
 builder.Services.AddScoped<IResidentialAddresRepository, ResidentialAddesRepository>();
@@ -41,6 +44,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
