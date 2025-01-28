@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Dtos.UserData;
 using api.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace api.Mapper
 {
@@ -19,6 +20,7 @@ namespace api.Mapper
                 Sex = dataModel.Sex,
                 DateOfBirth = dataModel.DateOfBirth.ToString("dd/MM/yyyy"),
                 DateOfCreateAccount = dataModel.DateOfCreateAccount,
+                DateOfAccess = dataModel.DateOfAccess,
                 PlaceOfBirths = dataModel.PlaceOfBirths.Select(c => c.ToPlaceOfBirthDto()).ToList()
             };
         }

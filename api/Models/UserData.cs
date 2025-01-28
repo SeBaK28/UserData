@@ -17,7 +17,7 @@ namespace api.Models
 
         public DateTime DateOfBirth { get; set; }
 
-        //public DateTime DateOfAccess { get; set; }
+        public DateTime DateOfAccess { get; set; }
 
         public DateTime DateOfCreateAccount { get; set; } = DateTime.Now;
 

@@ -27,6 +27,7 @@ namespace api.Dtos.UserData
         public string? DateOfBirth { get; set; }
 
         public DateTime DateOfCreateAccount { get; set; } = DateTime.Now;
+        public DateTime DateOfAccess { get; set; }
 
         public List<PlaceOfBirthDto>? PlaceOfBirths { get; set; }
         public List<ResidentialAddresDto>? residentialAddresProp { get; set; }

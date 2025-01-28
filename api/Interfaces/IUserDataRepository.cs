@@ -12,5 +12,6 @@ namespace api.Interfaces
         Task<UserData?> UpdateAsync(int id, UpdateUserDataRequestDto stockDto);
         Task<UserData?> DeleteAsync(int id);
         //Task<UserData?> GetByNameAsync(string Name);
+        Task<UserData> UpdateAccessAsync(int id, int months);
     }
 }

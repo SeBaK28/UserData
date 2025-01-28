@@ -115,6 +115,20 @@ namespace api.Controller
             return NoContent();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateAccess([FromRoute] int id, int months)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userToUpdate = await _userDataRepo.UpdateAccessAsync(id, months);
+
+            if (userToUpdate == null)
+                return NotFound();
+
+            return Ok(userToUpdate.ToStockDto());
+        }
+
 
     }
 }

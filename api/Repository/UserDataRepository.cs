@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.SqlServer.Server;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using api.Helpers;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace api.Repository
 {
@@ -74,6 +75,20 @@ namespace api.Repository
         public async Task<UserData?> GetByIdAsync(int id)
         {
             return await _context.UserDatas.Include(c => c.PlaceOfBirths).Include(d => d.ResidentialAddresProp).FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public async Task<UserData> UpdateAccessAsync(int id, int months)
+        {
+            var updateDate = await _context.UserDatas.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (updateDate == null)
+            {
+                return null;
+            }
+
+            updateDate.DateOfAccess = updateDate.DateOfAccess.AddMonths(months);
+
+            return updateDate;
         }
 
         // public async Task<UserData?> GetByNameAsync(string Name)
